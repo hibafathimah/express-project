@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
+router.use((req,res,next)=>{
+    console.log('router level middleWare function');
+    next()
+})
 
 const {getContact,postContact,putContact,deleteContact} = require('../Controllers/contactController')
 router.route('/').get(getContact)
