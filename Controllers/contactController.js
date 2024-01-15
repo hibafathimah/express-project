@@ -2,7 +2,14 @@ const getContact = (req,res)=>{
     res.status(200).json({message:"get all contacts"})
 }
 
-const postContact = (req,res)=>{
+const postContact =async (req,res)=>{
+    const {Name,Email,Phone} = req.body; //destructuring
+
+    const contactSchema = require ("../Models/contactSchema");  
+
+    const contact = contactSchema.create({name:Name, phone:Phone, email:Email});  //key:value , key = from contactSchema, value = from contactRouter
+
+
    res.status(200).json({message:`create contacts for ${req.body.name}`})  
  }
 
